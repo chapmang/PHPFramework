@@ -40,11 +40,11 @@ return array(
 
 		'mysql' => array(
 			'driver'   => 'mysql',
-			'host'     => 'localhost',
-			'port'	   => '3306',
-			'database' => 'aamedia-dev',
-			'username' => 'aamedia_admin',
-			'password' => 'ag3D745e453U83B',
+			'host'     => '',
+			'port'	   => '',
+			'database' => '',
+			'username' => '',
+			'password' => '',
 			'charset'  => 'utf8',
 			'prefix'   => ''
 		),
@@ -71,13 +71,13 @@ return array(
 
 		'oracle' => array(
 			"driver" => 'oracle',
-			'protocol' => 'TCP',
-			'host' => '10.78.16.161',
-			'port' => '1521',
-			'sid' => 'DACART01',
-			'username' => 'gb100',
-			'password' => 'gb100',
-			'charset' => 'AL32UTF8',
+			'protocol' => '',
+			'host' => '',
+			'port' => '',
+			'sid' => '',
+			'username' => '',
+			'password' => '',
+			'charset' => '',
 			'prefix' => ''
 		)
 	),

@@ -1,3 +1,3 @@
-# AA Walks database
+# PHPFramework
 
-A PHP webapp providing a management interface for AA Media's Walks Database
+A lightweight PHP framework for developing OOP webapps 
