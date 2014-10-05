@@ -141,6 +141,19 @@ namespace Framework {
 
 	$session = new Session();
 	Registry::set("session", $session->initialize());
+
+	/*
+	|--------------------------------------------------------------------------
+	| Register Cache Driver
+	|--------------------------------------------------------------------------
+	|
+	| Register the driver for caching
+	| Other drivers can be used if registered with the factory class
+	|
+	*/
+
+	$cache = new Cache();
+	Registry::set("cache", $cache->initialize());
 	    
 	/*
 	|--------------------------------------------------------------------------
