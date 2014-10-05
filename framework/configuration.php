@@ -46,7 +46,7 @@ namespace Framework {
 			if (file_exists(path('app') .'configuration/' . $file . EXT)) {
 				$items = include path('app') . 'configuration/' . $file . EXT;
 			} else {
-				throw new \Exception("$file configuration file is missing", 500);
+				throw new \Exception("{$file} configuration file is missing", 500);
 			}
 
 			if (is_null($item)) {

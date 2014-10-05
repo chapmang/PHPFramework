@@ -17,7 +17,6 @@ namespace Framework\Database\Query {
         public function all() {
             
             $sql = $this->_buildSelect();
-            var_dump($sql);
             list($statement, $result) = $this->connector->execute($sql, $this->bindings);
             
             if (!$result) {

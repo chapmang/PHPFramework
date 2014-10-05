@@ -40,9 +40,9 @@ namespace Framework {
 
 			if (!$this->_driver) {
 				$driver = Configuration::get('session');
-                $this->setDriver($driver['driver']);
+                $this->driver($driver['driver']);
                 unset($driver['driver']);
-                $this->setOptions($driver);
+                $this->options($driver);
 			}
 
 			if (!$this->_driver) {
