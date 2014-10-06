@@ -24,7 +24,7 @@ namespace Framework\Database\Query {
 
 			$fetchStyle = Configuration::get('database.fetch');
 			if($fetchStyle === PDO::FETCH_CLASS) {
-				return $this->connector->fetch($statement, PDO::FETCH_CLASS, 'stfClass');
+				return $this->connector->fetch($statement, PDO::FETCH_CLASS, 'stdClass');
 			} else {
 				return $this->connector->fetch($statement, $fetchStyle);
 			}
@@ -37,10 +37,12 @@ namespace Framework\Database\Query {
         public function select() {
 
             if ($this->distinct) {
-                $select = 'SELECT DISTINCT';
-            } else {
-                $select = 'SELECT ';
-            }
+				$select = 'SELECT DISTINCT';
+			} else if($this->aggregate){
+				$select = "SELECT {$this->_aggregate}({$this->fields[0]})";
+			} else {
+				$select = 'SELECT';
+			}
 
             // Instead of using a "LIMIT" keyword, SQL Server uses the TOP keyword
             // within the SELECT statement. So, if we have a limit, we will add
