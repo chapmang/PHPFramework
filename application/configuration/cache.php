@@ -25,7 +25,7 @@ return array(
 	'settings' => array(
 		'file' => array(
 			'duration' => 3600,
-			'cacheFolder' => $paths('storage').'cache/',
+			'cacheFolder' => path('storage').'cache/',
 			'cacheFile' => date("Y-m-d")
 			),
 		'memcached' => array(

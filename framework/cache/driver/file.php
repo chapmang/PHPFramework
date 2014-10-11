@@ -48,7 +48,7 @@ namespace Framework\Cache\Driver {
 		public function get($key) {
 
 			// If desired clean up all expired cached objects
-			if ($this->_autoEraseExpired) {
+			if ($this->_autoDeleteExpired) {
 				$this->deleteExpired();
 			}
 
@@ -67,7 +67,7 @@ namespace Framework\Cache\Driver {
 		public function getAll() {
 
 			// If desired clean up all expired cached objects
-			if ($this->_autoEraseExpired) {
+			if ($this->_autoDeleteExpired) {
 				$this->deleteExpired();
 			}
 
@@ -99,7 +99,7 @@ namespace Framework\Cache\Driver {
 			// Build and add data to cache
 			$data = array(
 				'time' => time(),
-				'data' => serialize($data)
+				'data' => serialize($value)
 			);
 
 			if (is_array($dataArray)) {
@@ -133,8 +133,8 @@ namespace Framework\Cache\Driver {
 			if (is_array($cachedData)) {
 				if (isset($cachedData[$key])) {
 					unset($cachedData[$key]);
-					$cachedData = json_encode($cacheData);
-					if (true !== file_put_contents($filename, $cacheData)) {
+					$cachedData = json_encode($cachedData);
+					if (true !== file_put_contents($filename, $cachedData)) {
 						return false;
 					} 
 				} else {
@@ -155,7 +155,7 @@ namespace Framework\Cache\Driver {
 
 			// if valid empty the cache
 			if (file_exists($filename)) {
-				if (true !== file_put_contents($file, "")) {
+				if (true !== file_put_contents($filename, "")) {
 					return false;
 				}
 			} else {

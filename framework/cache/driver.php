@@ -1,7 +1,7 @@
 <?php
 namespace Framework\Cache {
 
-	use Frameework\Base as Base;
+	use Framework\Base as Base;
 
 	abstract class Driver extends Base {
 
@@ -12,11 +12,11 @@ namespace Framework\Cache {
 			return $this;
 		}
 
-		abstract public function get();
+		abstract public function get($key);
 
-		abstract public function set();
+		abstract public function set($key, $value);
 
-		abstract public function delete();
+		abstract public function delete($key);
 
 		protected function _getExceptonForImplementation($method) {
 

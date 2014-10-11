@@ -10,17 +10,26 @@ namespace Framework {
 	*/
 	class Cache extends Base {
 		
+		/**
+		 * [$_driver description]
+		 * @var string
+		 * @readwrite
+		 */
 		protected $_driver;
 
+		/**
+		 * [$_options description]
+		 * @var array
+		 * @readwrite
+		 */
 		protected $_options;
 
-		protected function initialize() {
+		public function initialize() {
 
 			Event::fire("framework.cache.initialize.before", array($this->_driver, $this->_options));
 
 			if (!$this->_driver) {
 				$config = Configuration::get("cache");
-
 				$this->driver = $config['default'];
 				$this->options = Configuration::get("cache.settings." . $this->_driver);
 			}
