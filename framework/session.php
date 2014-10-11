@@ -39,10 +39,10 @@ namespace Framework {
 			Event::fire("framework.session.initialize.before", array($this->_driver, $this->_options));
 
 			if (!$this->_driver) {
-				$driver = Configuration::get('session');
-                $this->driver($driver['driver']);
-                unset($driver['driver']);
-                $this->options($driver);
+				$config = Configuration::get('session');
+                $this->driver = $config['driver'];
+                unset($config['driver']);
+                $this->options = $config;
 			}
 
 			if (!$this->_driver) {
