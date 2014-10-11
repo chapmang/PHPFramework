@@ -24,7 +24,7 @@ return array(
 	| applications will no doubt only use one connection; however, you have
 	| the freedom to specify as many connections as you can handle.
 	|
-	| All database work in Laravel is done through the PHP's PDO facilities,
+	| All database work done through PHP's PDO facilities,
 	| so make sure you have the PDO drivers for your particular database of
 	| choice installed on your machine.
 	|
