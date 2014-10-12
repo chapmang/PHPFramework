@@ -92,10 +92,9 @@ namespace Framework {
                     $this->addRoute($routeClone);
                 }
             } else {
-                    if (in_array($route->method, $this->_requestMethods)) {
-                        $this->_routes[$route->method][] = $route; 
-                    }
-             
+                if (in_array($route->method, $this->_requestMethods)) {
+                    $this->_routes[$route->method][] = $route; 
+                }
             }
             return $this;
         }
