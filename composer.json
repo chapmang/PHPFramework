@@ -11,10 +11,8 @@
             "role": "owner"
     }],
     "config": {
-        "vendor-dir": "application/plugins",
-        "preferred-install": "dist"
+        "vendor-dir": "application/plugins"
     },
-    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4",
         "ircmaxell/password-compat": "~1.0",
