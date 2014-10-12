@@ -4,6 +4,19 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Debug
+	|--------------------------------------------------------------------------
+	|
+	| Detailed error messages contain information about the file in which an
+	| error occurs, as well as a PHP stack trace containing the call stack.
+	| NB: Advisable to disable in a production environment
+	|
+	*/
+
+	'debug' => true,
+
+	/*
+	|--------------------------------------------------------------------------
 	| Error Logging
 	|--------------------------------------------------------------------------
 	|
@@ -26,18 +39,6 @@ return array(
 	
 	'logPath' => path('storage') . "logs/errors/" . date("Y-m-d") . ".log",
 
-	/*
-	|--------------------------------------------------------------------------
-	| Error Detail
-	|--------------------------------------------------------------------------
-	|
-	| Detailed error messages contain information about the file in which an
-	| error occurs, as well as a PHP stack trace containing the call stack.
-	| NB: Advisable to disable in a production environment
-	|
-	*/
-
-	'detail' => true,
 
 	/*
 	|--------------------------------------------------------------------------

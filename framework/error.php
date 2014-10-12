@@ -10,6 +10,11 @@ namespace Framework {
 	 */
 	class Error {
 
+		protected static $_exceptions = array(
+	                "500",
+	                "404"
+	            );
+
 		/**
 		 * Handle an exception by logging it and either
 		 * displaying detailed report or directing to base
@@ -22,9 +27,9 @@ namespace Framework {
 			// Send exception to be logged
 			static::log($exception);
 
-			// If detailed reports enabled, format the exception 
+			// If debug enabled, format the exception 
 			// to clean message and display on screen
-			if (Configuration::get('error.detail')) {
+			if (Configuration::get('error.debug')) {
 		        $message 	= $exception->getMessage();
 				$code 		= $exception->getCode();
 				$file		= $exception->getFile();
@@ -56,29 +61,25 @@ namespace Framework {
 					<br/><br/>";
 				echo $logMessage;
 				return;
-			}
+			} else {
 
-			// If detailed reports NOT enabled direct to 
-			// base exception pages
-			// 
-			// list exceptions
-            $exceptions = array(
-                "500",
-                "404"
-            );
-            
-            $code = $exception->getCode();
-            if (in_array($code, $exceptions)) {
-            	header("Content-type: text/html");
-            	$view = file_get_contents(path('app') . "views/errors/{$code}".EXT);
-            	echo $view;
-            	exit;
-        	}
-            
+				// If detailed reports NOT enabled direct to 
+				// base exception pages
+	            $code = $exception->getCode();
+
+	           	if (!in_array($code, static::$_exceptions)) {
+	           		$code = '500';
+	           	}
+	            header("Content-type: text/html");
+	            $view = file_get_contents(path('app') . "views/errors/{$code}".EXT);
+	            echo $view;
+	            exit;
+	        }
+
             // Should it all fail render a fallback template
             header("Content-type: text/html");
             echo "An error occurred.";
-            exit;
+            exit(1);
 		}
 
 		/**
