@@ -11,11 +11,13 @@
             "role": "owner"
     }],
     "config": {
-        "vendor-dir": "application/plugins"
+        "vendor-dir": "application/libraries"
     },
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.4"     
+    },
+    "suggested": {
         "ircmaxell/password-compat": "~1.0",
-        "imagine/imagine": "~0.6"       
+        "imagine/imagine": "~0.6" 
     }
 }
