@@ -7,7 +7,7 @@
  * @copyright 2012 The Authors
  */
 
-namespace {
+namespace Password{
 
 if (!defined('PASSWORD_DEFAULT')) {
 
