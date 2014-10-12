@@ -65,7 +65,6 @@ namespace Framework {
 	require_once path('system') . "event" . EXT;
 	require_once path('system') . "configuration" . EXT;
 	require_once path('system') . "autoloader" . EXT;
-	require_once path('system') . "password" . EXT;
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -80,25 +79,6 @@ namespace Framework {
 	*/
 
 	spl_autoload_register(array('Framework\\Autoloader', 'load'));
-
-	/*
-	|--------------------------------------------------------------------------
-	| Initialize Plug-ins
-	|--------------------------------------------------------------------------
-	|
-	| Initialize any Plug-ins allowing them to immediately stat listening to
-	| framework events and acting accordingly.
-	|
-	*/
-
-	$path = path('app'). "plugins";
-    $iterator = new \DirectoryIterator($path);
-    
-    foreach ($iterator as $item) {
-        if (!$item->isDot() && $item->isDir()) {
-            include($path . "/" . $item->getFilename() . "/initialize.php");
-        }
-    }
 
 	/*
 	|--------------------------------------------------------------------------
