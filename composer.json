@@ -1,5 +1,15 @@
 {
     "name":"chapmang/phpframework",
+    "description": "Small PHP Framework",
+    "Keywords": ["Framework", "PHP"],
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "Geoff Chapman",
+            "email": "geoff.chapman@mac.com",
+            "homepage": "http://www.geoffreychapman.co.uk",
+            "role": "owner"
+    }],
     "config": {
         "vendor-dir": "application/plugins"
     },
