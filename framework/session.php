@@ -55,7 +55,7 @@ namespace Framework {
             	case 'server':
             		return new Session\Driver\Server($this->_options);
             		break;
-            	case 'server':
+            	case 'file':
             		return new Session\Driver\File($this->_options);
             		break;
             	default:
