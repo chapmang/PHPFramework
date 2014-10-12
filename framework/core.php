@@ -83,6 +83,25 @@ namespace Framework {
 
 	/*
 	|--------------------------------------------------------------------------
+	| Initialize Plug-ins
+	|--------------------------------------------------------------------------
+	|
+	| Initialize any Plug-ins allowing them to immediately stat listening to
+	| framework events and acting accordingly.
+	|
+	*/
+
+	$path = path('app'). "plugins";
+    $iterator = new \DirectoryIterator($path);
+    
+    foreach ($iterator as $item) {
+        if (!$item->isDot() && $item->isDir()) {
+            include($path . "/" . $item->getFilename() . "/initialize.php");
+        }
+    }
+
+	/*
+	|--------------------------------------------------------------------------
 	| Register Database Connector
 	|--------------------------------------------------------------------------
 	|
@@ -114,20 +133,6 @@ namespace Framework {
 	| </code>
 	*/
 
-
-	/*
-	|--------------------------------------------------------------------------
-	| Register Framework Events
-	|--------------------------------------------------------------------------
-	|
-	| The framework includes functionality for registering and listening to
-	| events. There are a series of core events registered to fire when the 
-	| framework itself does something.
-	| NB: These core events are also logged in the storage directory
-	|
-	*/
-
-	include_once path('system') . 'events/frameworkevents' . EXT;
 
 	/*
 	|--------------------------------------------------------------------------
