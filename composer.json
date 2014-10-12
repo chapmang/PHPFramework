@@ -1,16 +1,18 @@
-
 {
- "name": "chapmang/phpframework",
-  "authors": [
-        {
-            "name": "Geoff Chapman",
-            "email": "geoff.chapman@mac.com",
-            "homepage": "http://www.geoffreychapman.co.uk",
-            "role": "Developer"
-        }
-    ], 
+    "name":"chapmang/phpframework",
+    "config": {
+        "vendor-dir": "application/plugins"
+    },
     "require": {
+<<<<<<< Updated upstream
         "php": ">=5.4"        
     },
     "stabiity": "stable
 }
+=======
+        "php": ">=5.4.0",
+        "ircmaxell/password-compat": "~1.0",
+        "imagine/imagine": "~0.6"
+    }
+}
+>>>>>>> Stashed changes
