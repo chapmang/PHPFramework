@@ -5,14 +5,8 @@
     },
     "require": {
 <<<<<<< Updated upstream
-        "php": ">=5.4"        
-    },
-    "stabiity": "stable
-}
-=======
-        "php": ">=5.4.0",
+        "php": ">=5.4",
         "ircmaxell/password-compat": "~1.0",
-        "imagine/imagine": "~0.6"
+        "imagine/imagine": "~0.6"       
     }
 }
->>>>>>> Stashed changes
