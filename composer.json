@@ -2,7 +2,7 @@
     "name":"chapmang/phpframework",
     "description": "Small PHP Framework",
     "Keywords": ["Framework", "PHP"],
-    "licence": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Geoff Chapman",
