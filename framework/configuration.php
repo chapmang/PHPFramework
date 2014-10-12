@@ -48,7 +48,7 @@ namespace Framework {
 			} else {
 				throw new \Exception("{$file} configuration file is missing", 500);
 			}
-
+			
 			if (is_null($item)) {
 				return $items;
 			} else {
