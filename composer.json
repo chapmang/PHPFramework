@@ -4,7 +4,6 @@
         "vendor-dir": "application/plugins"
     },
     "require": {
-<<<<<<< Updated upstream
         "php": ">=5.4",
         "ircmaxell/password-compat": "~1.0",
         "imagine/imagine": "~0.6"       
