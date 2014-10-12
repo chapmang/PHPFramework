@@ -1,0 +1,15 @@
+
+{
+ "name": "PHPFramework/phpFramework",
+  "authors": [
+        {
+            "name": "Geoff Chapman",
+            "email": "geoff.chapman@mac.com",
+            "homepage": "http://www.geoffreychapman.co.uk",
+            "role": "Developer"
+        }
+    ], 
+    "require": {
+        "php": ">=5.4"        
+    }
+}
