@@ -10,8 +10,6 @@ namespace Framework {
 	 */
 	class Log {
 
-		protected static $_logPath;
-
 		private function __construct() {
 			// do nothing
 		}
@@ -29,16 +27,16 @@ namespace Framework {
 
 			// Fetch log location from config file 
 			if (Configuration::get('error.logPath')) {
-				self::$_logPath = Configuration::get('error.logPath');
+				$logPath = Configuration::get('error.logPath');
 			} else {
 				// Default framework log location 
-				self::$_logPath = path('storage') . "logs/errors/" . date("Y-m-d") . ".log";
+				$logPath = path('storage') . "logs/errors/" . date("Y-m-d") . ".log";
 			}
 
 			// Write the entry to the log file
 			$message = $e->getMessage() . ' in ' . $e->getFile() . ' on line ' . $e->getLine();
 			
-			static::write('error', $message);
+			static::write('error', $logPath, $message);
 		}
 
 		/**
@@ -48,13 +46,13 @@ namespace Framework {
 		 * @param string $message Formated log message
 		 * @return void           	
 		 */
-		public static function write($type, $message) {
+		public static function write($type, $logPath, $message) {
 
 			// Write the entry to the log file
 			$type = strtoupper($type);
 			$template = "[".date('Y-m-d H:i:s')."] %s - %s".PHP_EOL;
 			$logEntry = sprintf($template, $type, $message);
-			file_put_contents(self::$_logPath, $logEntry, FILE_APPEND);
+			file_put_contents($logPath, $logEntry, FILE_APPEND);
 
 		}
 
