@@ -133,16 +133,20 @@ namespace Framework
                     
                     header("Content-type: {$defaultContentType}");
                     echo $results;
+                    ob_end_flush();
+
 
                 } else if ($doAction) {
                     
                     header("Content-type: {$defaultContentType}");
                     echo $results;
+                    ob_end_flush();
                 }
                 
                 // Prevent re-rendering
                 $this->willRenderLayoutView = false;
                 $this->willRenderActionView = false;
+                flush();
 
             } catch (Exception $e) {
                 throw new \Exception("Invalid layout/template syntax: ". $e->getMessage(), 500);

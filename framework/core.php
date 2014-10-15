@@ -11,10 +11,21 @@ namespace Framework {
 	| just a simple constant.
 	|
 	*/
-
+	
 	define('EXT', '.php');
 	define('CRLF', "\r\n");
 	define('MB_STRING', (int) function_exists('mb_get_info'));
+
+	/*
+	|--------------------------------------------------------------------------
+	| Start Output Buffering
+	|--------------------------------------------------------------------------
+	|
+	| Output buffering allows us to capture all output at any time, so that we
+	| can discard it or treat it accordingly. (must be enabled in php.ini to work)
+	|
+	*/
+	ob_start('ob_gzhandler');
 
 	/*
 	|--------------------------------------------------------------------------
