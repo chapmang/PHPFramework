@@ -42,10 +42,10 @@ namespace Framework\Template\Implementation {
                     "closer" => "}",
                     "handler" => "_include"
                 ),
-                "yield" => array(
-                    "opener" => "{yield",
+                "produce" => array(
+                    "opener" => "{produce",
                     "closer" => "}",
-                    "handler" => "yield"
+                    "handler" => "produce"
                 )
             ) + $this->_map;
             
@@ -180,13 +180,13 @@ namespace Framework\Template\Implementation {
         
 
         /**
-         * Optimize a yield string from a template for final function
+         * Optimize a produce string from a template for final function
          * Return any stored data for a given key
          * @param  array $tree    Node form template tree
          * @param  mixed $content Content of node
          * @return string
          */
-        public function yield($tree, $content) {
+        public function produce($tree, $content) {
 
             $key = trim($tree["raw"]);
             $value = addslashes($this->_getValue($key));
