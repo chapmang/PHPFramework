@@ -11,7 +11,7 @@ namespace Framework {
 		 * @param  string $key Name of Cookie to be searched for
 		 * @return boolean     
 		 */
-		public static function exists($key) {
+		public function exists($key) {
 
 			return ! is_null(static::get($key));
 		}
@@ -22,10 +22,10 @@ namespace Framework {
 		 * @param  string $default 
 		 * @return mixed          
 		 */	
-		public static function get($key, $default="") {
+		public function get($key, $default="") {
 
 			if (!is_null($value = RequestMethods::cookie($key))) {
-				return static::parse($value);
+				return $this->parse($value);
 			}
 
 			return $default;
@@ -40,7 +40,7 @@ namespace Framework {
 		 * @param string  $domain   The domain the cookie will be available to
 		 * @param boolean $secure   Indicates if cookie is https only
 		 */
-		public static function set($key, $value, $duration = 0, $path = "/", $domain = null, $secure = false) {
+		public function set($key, $value, $duration = 0, $path = "/", $domain = null, $secure = false) {
 			
 			// convert life span to unix timestamp
 			if ( $duration !== 0) {
@@ -52,10 +52,10 @@ namespace Framework {
 
 			if (is_array($cookieData)) {
 				foreach ($cookieData as $k => $v) {
-					static::setCookieData($k, $v, $expire, $path, $secure);
+					$this->setCookieData($k, $v, $expire, $path, $secure);
 				}
 			} else {
-				static::setCookieData($key, $cookieData, $expire, $path, $secure);
+				$this->setCookieData($key, $cookieData, $expire, $path, $secure);
 			}
 		}
 
@@ -64,15 +64,15 @@ namespace Framework {
 		 * @param  string $value date to be encoded
 		 * @return mixed        
 		 */
-		protected  static function encode($value = null) {
+		protected function encode($value = null) {
 
 			if (is_array($value)) {
 				foreach ($value as $k => $v) {
-					$encoded[$k] = static::encode($v);
+					$encoded[$k] = $this->encode($v);
 				}
 			return $encoded;
 			} else {
-				return static::hash($value)."+".$value;
+				return $this->hash($value)."+".$value;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Framework {
 		 * @param string  $domain   The domain the cookie will be available to
 		 * @param boolean $secure   Indicates if cookie is https only
 		 */
-		protected static function setCookieData($key, $value, $expire= 0, $path = "/", $domain = null, $secure = false) {
+		protected function setCookieData($key, $value, $expire= 0, $path = "/", $domain = null, $secure = false) {
 
 			return setcookie($key, $value, $expire, $path, $domain, $secure);
 		}
@@ -95,7 +95,7 @@ namespace Framework {
 		 * @param  string $value Value to be parsed
 		 * @return mixed        
 		 */
-		protected static function parse($value) {
+		protected function parse($value) {
 
 			$sections = explode('+', $value);
 
@@ -104,7 +104,7 @@ namespace Framework {
 				return null;
 			}
 
-			if ($sections[0] !== static::hash($sections[1])) {
+			if ($sections[0] !== $this->hash($sections[1])) {
 
 				return null;
 			}
@@ -117,7 +117,7 @@ namespace Framework {
 		 * @param  string $value Value to be hashed
 		 * @return string        
 		 */
-		protected static function hash($value){
+		protected function hash($value){
 			return hash_hmac('sha1', $value, Configuration::get('application.key'));
 		}
 	}
