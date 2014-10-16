@@ -25,6 +25,7 @@ namespace Framework {
 	| can discard it or treat it accordingly. (must be enabled in php.ini to work)
 	|
 	*/
+
 	ob_start('ob_gzhandler');
 
 	/*
