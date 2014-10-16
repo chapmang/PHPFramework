@@ -36,10 +36,12 @@ namespace Framework {
 			);
 
 		protected $_columns;
+
 		protected $_primary;
 
 	    public function __construct ($options = array()) {
 	    	parent::__construct($options);
+
 			$this->load();
 		}
 
@@ -58,6 +60,7 @@ namespace Framework {
 
 			// If primary column known (else like creating new record)
 			if (!empty($this->$raw)) {
+
 				$previous = Database::query()
 					->from($this->table)
 					->where("{$name}", "=", $this->$raw)
@@ -77,6 +80,7 @@ namespace Framework {
 					}
 				}
 			}
+
 		}
 
 		/**
@@ -294,9 +298,10 @@ namespace Framework {
 		 * @return mixed             Row returned from database
 		 */
 		public static function first($where = array(), $fields = array("*"), $joins = array(), $order = null, $direction = null) {
-			
+
 			$model = new static();
-			return $model->_first($where, $fields, $order, $direction);
+			$res = $model->_first($where, $fields, $order, $direction);
+			return $res;
 		}
 
 		/**
@@ -312,7 +317,7 @@ namespace Framework {
 
 			$query = Database::query()
 				->from($this->table, $fields);
-
+ 		
 			foreach ($where as $i) {
 				list($clause, $operator, $value) = $i;
 				$query->where($clause, $operator, $value);
@@ -330,11 +335,12 @@ namespace Framework {
 			}
 
 			$first = $query->first();
-			$class = get_class($this);
 
+			$class = get_class($this);
+	
 			if ($first) {
 				return new $class(
-					$query->first()
+					$first
 				);
 			}
 
